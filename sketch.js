@@ -32,7 +32,7 @@ function setup() {
 	
 	var package_option = {
 	 isStatic : true,
-	 restitution : 1.0
+	 restitution : 0.6
 	}
 	packageBody = Bodies.circle(width/2 , 200 , 5 , package_option);
 	World.add(world, packageBody);
@@ -56,13 +56,14 @@ function draw() {
   Engine.update(engine);
   ellipseMode(RADIUS);
   ellipse(packageBody.position.x,packageBody.position.y,5,5);
+  keyPressed();
   drawSprites();
 }
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on
-    packageBody = Bodies.circle(width/2 , 200 , 5 , {isStatic : false,restitution : 1.0});
+    Body.setStatic(packageBody,false);
   }
 }
 
